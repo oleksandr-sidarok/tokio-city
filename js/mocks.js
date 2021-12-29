@@ -21,13 +21,13 @@ const createMock = function (i) {
     avatar: `img/avatars/user0${i + 1}.png`
   }
 
-  return moks
+  return mock
 }
 
-export const getMoks = function (count = 8) {
+export const getMocks = function (count = 8) {
   const mockArr = []
   for (let index = 0; index < count; index++) {
-    const mock = createMock(i)
+    const mock = createMock(index)
     mockArr.push(mock)
   }
   return mockArr

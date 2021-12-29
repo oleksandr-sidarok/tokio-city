@@ -1,7 +1,7 @@
-export const setPins = () => {
+export const setPins = (mocks) => {
   const pinTemplate = document.querySelector('#pin').content
   const pinElement = pinTemplate.querySelector('button')
-  const pinsContainer = document.querySelector('.map_pins')
+  const pinsContainer = document.querySelector('.map__pins')
 
   mocks.forEach( mock => {
     const pin = pinElement.cloneNode(true)

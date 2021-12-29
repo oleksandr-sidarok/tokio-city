@@ -1,4 +1,6 @@
-import {getMoks} from './mocks.js'
+import {getMocks} from './mocks.js'
 import {setPins} from './pins.js'
 
-setPins()
+
+const mocks = getMocks()
+setPins(mocks)
