@@ -20,7 +20,7 @@ const createMock = function (i) {
   mock.author = {
     avatar: `img/avatars/user0${i + 1}.png`
   }
-
+  mock.photos = [`https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`]
   return mock
 }
 
