@@ -3,6 +3,6 @@ export const getRandom = function (max = 10, min = 0) {
   return Math.floor(rand)
 }
 
-export const getRandomFromArray = function (arr) {
-  return arr[getRandom(arr.lenght)]
+export const getRandomFromArray = (array) => {
+  return array[getRandom(array.length - 1)]
 }
