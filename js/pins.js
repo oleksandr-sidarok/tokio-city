@@ -5,20 +5,35 @@ const createCard = function (mock) {
   const cardImg = card.querySelector('.popup__avatar')
   const cardTitle = card.querySelector('.popup__title')
   const cardDescr = card.querySelector('.popup__description')
+  const cardAddress = card.querySelector('.popup__text--address')
+  const cardTime = card.querySelector('.popup__text--time')
+  const cardPrice = card.querySelector('.popup__text--price')
+  const cardCapacity = card.querySelector('.popup__text--capacity')
   const cardPhotos = card.querySelectorAll('.popup__photo')
+  const cardFeatures = card.querySelector('.popup__features')
   const closeBtn = card.querySelector('.popup__close')
 
   closeBtn.addEventListener('click', () => {
     card.remove()
   })
   cardPhotos.forEach((e, i) => {
-    console.log(e)
-    console.log(i)
     e.src = mock.photos[i]
   })
   cardImg.src = mock.author.avatar
   cardTitle.textContent = mock.offer.title
   cardDescr.textContent = mock.offer.description
+  cardTime.textContent = `Заезд после ${mock.offer.settlement}, выезд до ${mock.offer.eviction}`
+  cardPrice.textContent = `${mock.offer.price}₽/ночь`
+  cardCapacity.textContent = `${mock.offer.rooms} комнаты для ${mock.offer.guests} гостей`
+  cardAddress.textContent = mock.offer.address
+  console.log(cardFeatures)
+  cardFeatures.innerHTML = ''
+  mock.offer.features.forEach((feature) => {
+    const li = document.createElement('li')
+    li.classList.add('popup__feature')
+    li.classList.add(`popup__feature--${feature}`)
+    cardFeatures.insertAdjacentElement('beforeend', li)
+  })
 
   return card
 }

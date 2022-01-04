@@ -1,6 +1,6 @@
 import { getRandom } from "./helpers.js";
 import { getRandomFromArray } from "./helpers.js";
-import { TITLES, DESCRS, MAX_COORD, MIN_COORD, TIME_VALUES } from "./constants.js"
+import { TITLES, DESCRS, MAX_COORD, MIN_COORD, TIME_VALUES, FEATURES } from "./constants.js"
 
 const createMock = function (i) {
   const mock = {}
@@ -11,16 +11,20 @@ const createMock = function (i) {
   }
   mock.offer = {
     title: getRandomFromArray(TITLES),
-    address: `${mock.location.x, mock.location.y}`,
+    address: `${mock.location.x}, ${mock.location.y}`,
     price: getRandom(100000),
-    guests: getRandom(10),
-    description: getRandomFromArray(DESCRS),
-    checkin: getRandomFromArray (TIME_VALUES)
+    rooms: getRandom(9, 2),
+    guests: getRandom(9, 2),
+    description: getRandomFromArray (DESCRS),
+    settlement: getRandomFromArray (TIME_VALUES),
+    eviction: getRandomFromArray (TIME_VALUES),
+    features: getRandomFromArray (FEATURES, true)
   }
   mock.author = {
     avatar: `img/avatars/user0${i + 1}.png`
   }
-  mock.photos = [`https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom()}/tokio,house/all`]
+  // getRandom it is necessary that the pictures were different. Without this method, the same image is returned
+  mock.photos = [`https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all` , `https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all`, `https://loremflickr.com/320/24${getRandom(9)}/tokio,house/all`]
   return mock
 }
 
