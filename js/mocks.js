@@ -1,6 +1,6 @@
 import { getRandom } from "./helpers.js";
 import { getRandomFromArray } from "./helpers.js";
-import { TITLES, DESCRS, MAX_COORD, MIN_COORD, TIME_VALUES, FEATURES } from "./constants.js"
+import { TITLES, DESCRS, MAX_COORD, MIN_COORD, TIME_VALUES, FEATURES, TYPES } from "./constants.js"
 
 const createMock = function (i) {
   const mock = {}
@@ -13,6 +13,7 @@ const createMock = function (i) {
     title: getRandomFromArray(TITLES),
     address: `${mock.location.x}, ${mock.location.y}`,
     price: getRandom(100000),
+    type: getRandomFromArray(TYPES),
     rooms: getRandom(9, 2),
     guests: getRandom(9, 2),
     description: getRandomFromArray (DESCRS),
