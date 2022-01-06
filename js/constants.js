@@ -18,3 +18,4 @@ export const DESCRS = [
 export const TYPES = ['palace', 'flat', 'house', 'bungalo']
 export const TIME_VALUES = ['13:45', '15:30', '17:00']
 export const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner']
+export const ANY = 'any'

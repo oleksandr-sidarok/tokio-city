@@ -17,3 +17,7 @@ export const getRandomFromArray = (array, many = false) => {
   }
   return result
 }
+
+export const getNodeValue = function (selector, attr = 'value') {
+  return document.querySelector(selector)[attr]
+}
