@@ -3,6 +3,7 @@ import { setPins } from './pins.js'
 import { filter } from './filters.js'
 import { DATA_URL } from './constants.js'
 import { setError } from './error.js'
+import { movePin } from './main-pin.js'
 
 const start = async () => {
   let data
@@ -14,7 +15,7 @@ const start = async () => {
   }
   const filteredData = await filter(data)
   setPins(filteredData)
-
+  movePin()
 }
 
 start()

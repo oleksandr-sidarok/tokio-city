@@ -20,13 +20,13 @@ const createCard = function (data) {
     card.remove()
   })
   cardImg.src = data.author.avatar
-  cardType.textContent = () => {
+  cardType.textContent = (() => {
     if(data.offer.type === 'flat') return 'Квартира'
     if(data.offer.type === 'place') return 'Дворец'
     if(data.offer.type === 'house') return 'Дом'
     if(data.offer.type === 'bungalo') return 'Бунгало'
     return 'Жилое помещение'
-  }
+  })()
   cardPhotos.forEach((photo) => {
     photo.src = `https://loremflickr.com/${getRandom(360, 320)}/${getRandom(300, 240)}/tokio,house`
   })
