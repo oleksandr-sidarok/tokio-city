@@ -215,6 +215,7 @@ fieldset {
   position: absolute;
 
   cursor: move;
+  z-index: 2;
 }
 
 .map__pin--main img {
