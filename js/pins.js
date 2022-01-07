@@ -1,4 +1,6 @@
-const createCard = function (mock) {
+import { getRandom } from "./helpers.js"
+
+const createCard = function (data) {
   const cardTemplate = document.querySelector('#card').content
   const cardElement = cardTemplate.querySelector('article')
   const card = cardElement.cloneNode(true)
@@ -17,20 +19,26 @@ const createCard = function (mock) {
   closeBtn.addEventListener('click', () => {
     card.remove()
   })
-  cardPhotos.forEach((e, i) => {
-    e.src = mock.photos[i]
+  cardImg.src = data.author.avatar
+  cardType.textContent = () => {
+    if(data.offer.type === 'flat') return 'Квартира'
+    if(data.offer.type === 'place') return 'Дворец'
+    if(data.offer.type === 'house') return 'Дом'
+    if(data.offer.type === 'bungalo') return 'Бунгало'
+    return 'Жилое помещение'
+  }
+  cardPhotos.forEach((photo) => {
+    photo.src = `https://loremflickr.com/${getRandom(360, 320)}/${getRandom(300, 240)}/tokio,house`
   })
-  cardImg.src = mock.author.avatar
-  cardType.textContent = mock.offer.type
-  cardTitle.textContent = mock.offer.title
-  cardDescr.textContent = mock.offer.description
-  cardTime.textContent = `Заезд после ${mock.offer.settlement}, выезд до ${mock.offer.eviction}`
-  cardPrice.textContent = `${mock.offer.price}₽/ночь`
-  cardCapacity.textContent = `${mock.offer.rooms} комнаты для ${mock.offer.guests} гостей`
-  cardAddress.textContent = mock.offer.address
+  cardTitle.textContent = data.offer.title
+  cardDescr.textContent = data.offer.description
+  cardTime.textContent = `Заезд после ${data.offer.checkin}, выезд до ${data.offer.checkout}`
+  cardPrice.textContent = `${data.offer.price}₽/ночь`
+  cardCapacity.textContent = `${data.offer.rooms} комнаты для ${data.offer.guests} гостей`
+  cardAddress.textContent = data.offer.address
   cardFeatures.innerHTML = ''
 
-  mock.offer.features.forEach((feature) => {
+  data.offer.features.forEach((feature) => {
     const li = document.createElement('li')
     li.classList.add('popup__feature')
     li.classList.add(`popup__feature--${feature}`)
@@ -40,20 +48,19 @@ const createCard = function (mock) {
   return card
 }
 
-export const setPins = (mocks) => {
+export const setPins = (data) => {
   const pinTemplate = document.querySelector('#pin').content
   const pinElement = pinTemplate.querySelector('button')
   const pinsContainer = document.querySelector('.map__pins')
   const cardContainer = document.querySelector('.map')
 
-
-  mocks.forEach( mock => {
+  data.forEach( it => {
     const pin = pinElement.cloneNode(true)
     const image = pin.querySelector('img')
-    pin.style = `left: ${mock.location.x}px; top: ${mock.location.y}px;`
-    image.src = mock.author.avatar
+    pin.style = `left: ${it.location.x}px; top: ${it.location.y}px;`
+    image.src = it.author.avatar
 
-    const card = createCard(mock)
+    const card = createCard(it)
 
     pin.addEventListener('click', () => {
       cardContainer.querySelectorAll('.map__card').forEach ((e) => e.remove())

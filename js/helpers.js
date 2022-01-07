@@ -6,7 +6,7 @@ export const getRandom = function (max = 10, min = 0) {
 export const getRandomFromArray = (array, many = false) => {
   let result = []
   if(many) {
-    // each element can be included with a chance of 50%. I hope this is true
+    // each element can be included with a chance of 50%
     for (const e of array) {
       if(getRandom(1)) {
         result.push(e)
